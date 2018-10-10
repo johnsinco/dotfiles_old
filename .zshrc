@@ -20,3 +20,5 @@ export VISUAL=vim
 # usage: fn foo
 # to find all files containing 'foo' in the name
 function fn() { ls **/*$1* }
+
+# zsh plugin config

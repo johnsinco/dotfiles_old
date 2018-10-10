@@ -40,6 +40,7 @@ Plug 'christoomey/vim-tmux-navigator', { 'on':  'NERDTreeToggle' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-commentary'
 
 " Initialize plugin system
 call plug#end()
@@ -143,3 +144,7 @@ nmap <Leader>r :Tags<CR>
 " This uses Ack.vim to search for the word under the cursor
 nnoremap <leader><bs> :Ag! '\b<c-r><c-w>\b'<cr>
 nnoremap <leader>a :Ag
+
+
+" ==============  Colors  ==========================
+color atom-dark
