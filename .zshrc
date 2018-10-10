@@ -6,7 +6,13 @@ antibody bundle < ~/.dotfiles/zsh/zsh_plugins.txt
 # get aliases from alias file
 source $HOME/.aliases
 
+# set colors
+export CLICOLOR=1
 
+# set editors
+set -o vi
+export EDITOR=vim
+export VISUAL=vim
 
 # Functions
 #
