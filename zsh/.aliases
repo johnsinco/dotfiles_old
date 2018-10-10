@@ -1,0 +1,6 @@
+
+alias ll='ls -alrt'
+
+alias gs='git status'
+alias gap='git add -p'
+alias ..='cd ..'
