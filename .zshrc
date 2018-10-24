@@ -14,6 +14,9 @@ set -o vi
 export EDITOR=vim
 export VISUAL=vim
 
+# set options
+setopt autocd
+
 # Functions
 #
 # (f)ind by (n)ame
