@@ -17,6 +17,12 @@ export VISUAL=vim
 # set options
 setopt autocd
 
+# history
+SAVEHIST=1000
+HISTSIZE=1000
+HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY_TIME
+
 # Functions
 #
 # (f)ind by (n)ame
@@ -25,3 +31,7 @@ setopt autocd
 function fn() { ls **/*$1* }
 
 # zsh plugin config
+
+
+# setup rbenv
+eval "$(rbenv init -)"

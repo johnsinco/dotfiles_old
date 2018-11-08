@@ -19,8 +19,15 @@ set nowb
 set history=100                             " store previous commands
 set showmode                                " show mode at bottom
 set showcmd                                 " show incomplete commands
+set nowrap				    " no wrapping
 
 syntax on                                   " always do syntax highlighting
+set nocompatible                            " We're running Vim, not Vi!
+filetype on                                 " Enable filetype detection
+filetype indent on                          " Enable filetype-specific indenting
+filetype plugin on                          " Enable filetype-specific plugins
+"
+let loaded_matchparen = 1		    " turn off match parens until I can fix weird highlighting
 
 " ==================== SETUP VIM Plugins via vim-plug  ======================
 " install vim-plug if it doesnt exist
@@ -44,6 +51,8 @@ Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
 Plug 'raimondi/delimitmate'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'vim-ruby/vim-ruby'
 
 " Initialize plugin system
 call plug#end()
