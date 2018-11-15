@@ -18,10 +18,10 @@ export VISUAL=vim
 setopt autocd
 
 # history
-SAVEHIST=1000
-HISTSIZE=1000
+SAVEHIST=5000
+HISTSIZE=5000
 HISTFILE=~/.zsh_history
-setopt INC_APPEND_HISTORY_TIME
+setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY
 
 # Functions
 #
@@ -31,7 +31,10 @@ setopt INC_APPEND_HISTORY_TIME
 function fn() { ls **/*$1* }
 
 # zsh plugin config
-
+# history search
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # setup rbenv
 eval "$(rbenv init -)"

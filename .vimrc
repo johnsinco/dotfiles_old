@@ -53,6 +53,9 @@ Plug 'tpope/vim-endwise'
 Plug 'raimondi/delimitmate'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/ruby-matchit'
+" Plug 'vim-airline/vim-airline'
+" Plug 'edkolev/tmuxline.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -60,7 +63,8 @@ call plug#end()
 " NerdTree setup
 let NERDTreeMinimalUI = 1
 nmap <leader>n :NERDTreeToggle<cr>
-autocmd vimenter * NERDTree
+" nmap <C-\> :NERDTreeFind<CR>
+" autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
@@ -160,3 +164,7 @@ nnoremap <leader>a :Ag
 
 " ==============  Colors  ==========================
 color atom-dark
+
+
+" ==============  Ruby stuff =======================
+imap <S-CR>    <CR><CR>end<Esc>-cc
