@@ -20,6 +20,8 @@ set history=100                             " store previous commands
 set showmode                                " show mode at bottom
 set showcmd                                 " show incomplete commands
 set nowrap				    " no wrapping
+" set lazyredraw                              
+" set re=2
 
 syntax on                                   " always do syntax highlighting
 set nocompatible                            " We're running Vim, not Vi!
@@ -52,7 +54,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
 Plug 'raimondi/delimitmate'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/ruby-matchit'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -67,23 +69,13 @@ call plug#end()
 
 " NerdTree setup
 let NERDTreeMinimalUI = 1
+let NERDTreeQuitOnOpen = 1
 noremap <leader>n :NERDTreeToggle<cr>
-nnoremap <C-\> :NERDTreeFind<CR>
+noremap <leader>v :NERDTreeFind<CR>
+" commands below make scrolling super slow...  why?  
 " autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" Open the project tree and expose current file in the nerdtree with Ctrl-\
-" " calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-function! OpenNerdTree()
-  if &modifiable && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-  else
-    NERDTreeToggle
-  endif
-endfunction
-" nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
-" noremap <C-\> :call OpenNerdTree()<CR>
-
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " move between buffers / tmux panes
 noremap <C-j> <C-W>j
