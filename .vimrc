@@ -43,7 +43,7 @@ call plug#begin('~/.vim/plugged')
 
 " ===================  VIM plugins  ========================================
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'christoomey/vim-tmux-navigator', { 'on':  'NERDTreeToggle' }
+Plug 'christoomey/vim-tmux-navigator'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
@@ -54,6 +54,11 @@ Plug 'raimondi/delimitmate'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/ruby-matchit'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+" Plug 'janko-m/vim-test'
+" Plug 'skalnik/vim-vroom'
+
 " Plug 'vim-airline/vim-airline'
 " Plug 'edkolev/tmuxline.vim'
 
@@ -62,8 +67,8 @@ call plug#end()
 
 " NerdTree setup
 let NERDTreeMinimalUI = 1
-nmap <leader>n :NERDTreeToggle<cr>
-" nmap <C-\> :NERDTreeFind<CR>
+noremap <leader>n :NERDTreeToggle<cr>
+nnoremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -76,14 +81,15 @@ function! OpenNerdTree()
     NERDTreeToggle
   endif
 endfunction
-nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
+" nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
+" noremap <C-\> :call OpenNerdTree()<CR>
 
 
 " move between buffers / tmux panes
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 
 " split vim windows with 'vv' and 'ss'
@@ -137,7 +143,7 @@ imap <c-l> <space>=><space>
 nnoremap ,. '.
 
 " jump out of quotes
-imap <C-a> <esc>wa
+imap <C-q> <esc>wa
 
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
@@ -160,6 +166,7 @@ nmap <Leader>r :Tags<CR>
 " This uses Ack.vim to search for the word under the cursor
 nnoremap <leader><bs> :Ag! '\b<c-r><c-w>\b'<cr>
 nnoremap <leader>a :Ag
+nmap <M-k> :Ack! "\b<cword>\b" <CR>
 
 
 " ==============  Colors  ==========================
@@ -168,3 +175,11 @@ color atom-dark
 
 " ==============  Ruby stuff =======================
 imap <S-CR>    <CR><CR>end<Esc>-cc
+
+
+" ============== VIM test plugin bindings ==========
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
