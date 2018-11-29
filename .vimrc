@@ -20,6 +20,8 @@ set history=100                             " store previous commands
 set showmode                                " show mode at bottom
 set showcmd                                 " show incomplete commands
 set nowrap				    " no wrapping
+set scrolloff=2                             " 2 lines below the scroll point
+set smartindent
 " set lazyredraw                              
 " set re=2
 
@@ -136,6 +138,9 @@ nnoremap ,. '.
 
 " jump out of quotes
 imap <C-q> <esc>wa
+
+" insert pry command
+iabbr bpry require'pry';binding.pry
 
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
