@@ -13,6 +13,7 @@ export CLICOLOR=1
 set -o vi
 export EDITOR=vim
 export VISUAL=vim
+# export VIMRUNTIME=/usr/share/vim/vim80
 
 # set options
 setopt autocd
@@ -21,7 +22,7 @@ setopt autocd
 SAVEHIST=5000
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
-setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_ALL_DUPS
 
 # Functions
 #

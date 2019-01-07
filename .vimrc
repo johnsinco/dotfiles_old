@@ -21,17 +21,25 @@ set showmode                                " show mode at bottom
 set showcmd                                 " show incomplete commands
 set nowrap				    " no wrapping
 set scrolloff=2                             " 2 lines below the scroll point
-set smartindent
+set autoread
+" set smartindent
 " set lazyredraw                              
 " set re=2
 
-syntax on                                   " always do syntax highlighting
 set nocompatible                            " We're running Vim, not Vi!
+syntax on                                   " always do syntax highlighting
 filetype on                                 " Enable filetype detection
 filetype indent on                          " Enable filetype-specific indenting
 filetype plugin on                          " Enable filetype-specific plugins
 "
-let loaded_matchparen = 1		    " turn off match parens until I can fix weird highlighting
+" try to fix slow ruby syntax and scrolling
+let loaded_matchparen = 1		    " turn off match parens because its too slow
+let matchparen_timeout = 50 		    " matchparen vim plugin is too slow
+let ruby_no_expensive = 1 		    " turn off expensive ruby highlighting
+let ruby_minlines = 500
+
+" reload files when changed on disk
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 
 " ==================== SETUP VIM Plugins via vim-plug  ======================
 " install vim-plug if it doesnt exist
@@ -56,15 +64,20 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
 Plug 'raimondi/delimitmate'
 Plug 'ludovicchabant/vim-gutentags'
-" Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/ruby-matchit'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'vim-scripts/supertab'
 " Plug 'janko-m/vim-test'
 " Plug 'skalnik/vim-vroom'
 
 " Plug 'vim-airline/vim-airline'
 " Plug 'edkolev/tmuxline.vim'
+" Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
+
+" Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
 call plug#end()
@@ -96,6 +109,9 @@ nnoremap ,yw yiww
 " jump to first character
 nnoremap 0 ^
 nnoremap ^ 0
+
+" jump out of quotes
+nnoremap <S-Tab> <esc>la
 
 " ,# Surround a word with #{ruby interpolation}
 map ,# ysiw#
@@ -147,6 +163,11 @@ iabbr bpry require'pry';binding.pry
 nmap <silent> ,qc :cclose<CR>
 nmap <silent> ,qo :copen<CR>
 
+" show hidden chars
+" set listchars=tab:▸\
+" set listchars+=eol:¬
+" set listchars+=trail:·
+
 " ================ Search ===========================
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
@@ -172,7 +193,8 @@ color atom-dark
 
 " ==============  Ruby stuff =======================
 imap <S-CR>    <CR><CR>end<Esc>-cc
-
+" autocmd FileType ruby compiler ruby
+" autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 
 " ============== VIM test plugin bindings ==========
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -180,3 +202,14 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
+" ================ syntastic =====================
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_ruby_checkers = ['rubocop']
