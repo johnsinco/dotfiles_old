@@ -23,6 +23,7 @@ SAVEHIST=5000
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_ALL_DUPS
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Functions
 #
@@ -39,3 +40,8 @@ bindkey '^[[B' history-substring-search-down
 
 # setup rbenv
 eval "$(rbenv init -)"
+
+# FZF ignore files in gitignore
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+

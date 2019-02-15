@@ -183,7 +183,7 @@ nmap <Leader>r :Tags<CR>
 " ================= Ack.vim file search ==============
 " This uses Ack.vim to search for the word under the cursor
 nnoremap <leader><bs> :Ag! '\b<c-r><c-w>\b'<cr>
-nnoremap <leader>a :Ag
+nnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>")
 nmap <M-k> :Ack! "\b<cword>\b" <CR>
 
 
