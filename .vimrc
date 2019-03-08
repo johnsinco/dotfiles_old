@@ -76,7 +76,7 @@ Plug 'vim-scripts/supertab'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'elixir-lang/vim-elixir'
 Plug 'elixir-editors/vim-elixir'
-
+Plug 'hashivim/vim-terraform'
 " Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
@@ -213,3 +213,6 @@ nmap <silent> t<C-g> :TestVisit<CR>
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_ruby_checkers = ['rubocop']
+
+" ==== terraform ======
+let g:terraform_align=1
