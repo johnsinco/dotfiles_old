@@ -34,8 +34,8 @@ filetype plugin on                          " Enable filetype-specific plugins
 "
 " try to fix slow ruby syntax and scrolling
 let loaded_matchparen = 1		    " turn off match parens because its too slow
-let matchparen_timeout = 50 		    " matchparen vim plugin is too slow
-let ruby_no_expensive = 1 		    " turn off expensive ruby highlighting
+let matchparen_timeout = 50		    " matchparen vim plugin is too slow
+let ruby_no_expensive = 1		    " turn off expensive ruby highlighting
 let ruby_minlines = 500
 
 " reload files when changed on disk
@@ -77,6 +77,10 @@ Plug 'vim-scripts/supertab'
 " Plug 'elixir-lang/vim-elixir'
 Plug 'elixir-editors/vim-elixir'
 Plug 'hashivim/vim-terraform'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'flazz/vim-colorschemes'
+Plug 'yous/vim-open-color'
+Plug 'elmcast/elm-vim'
 " Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
@@ -188,7 +192,9 @@ nmap <M-k> :Ack! "\b<cword>\b" <CR>
 
 
 " ==============  Colors  ==========================
-color atom-dark
+" color atom-dark
+" color railscasts
+color open-color
 
 
 " ==============  Ruby stuff =======================
@@ -213,6 +219,23 @@ nmap <silent> t<C-g> :TestVisit<CR>
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_ruby_checkers = ['rubocop']
+"
+" ==== markdown preview
+let vim_markdown_preview_github=1
 
 " ==== terraform ======
 let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+
+" === 24 bit color support ====
+if $COLORTERM =~# 'truecolor' || $COLORTERM =~# '24bit'
+	if has('termguicolors')
+		" See :help xterm-true-color
+		if $TERM =~# '^screen'
+			let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+			let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+		endif
+		set termguicolors
+	endif
+endif
