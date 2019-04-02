@@ -80,7 +80,8 @@ Plug 'hashivim/vim-terraform'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'flazz/vim-colorschemes'
 Plug 'yous/vim-open-color'
-Plug 'elmcast/elm-vim'
+Plug 'lambdatoast/elm.vim'
+" Plug 'elmcast/elm-vim'
 " Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
