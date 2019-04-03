@@ -1,4 +1,5 @@
 --ignore-ack-defaults
+--ignore-file=is:tags
 # This is the default ackrc for ack version 2.24.
 
 # There are four different ways to match
