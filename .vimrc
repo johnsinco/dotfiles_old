@@ -22,6 +22,16 @@ set showcmd                                 " show incomplete commands
 set nowrap				    " no wrapping
 set scrolloff=2                             " 2 lines below the scroll point
 set autoread
+set foldmethod=manual
+set regexpengine=1
+set re=1
+" hack to try to speed up slow ruby files
+set synmaxcol=120                           " try to speed up long lines by not syntaxing them"
+syntax off
+set synmaxcol=400                           " try to speed up long lines by not syntaxing them"
+syntax on
+
+
 " set smartindent
 " set lazyredraw                              
 " set re=2
