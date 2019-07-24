@@ -33,8 +33,10 @@ syntax on
 
 
 " set smartindent
-" set lazyredraw                              
-" set re=2
+set tabstop=2 shiftwidth=2 expandtab
+" set expandtab
+" https://stackoverflow.com/questions/7655382/javascript-syntax-indentation-in-vim/43249918
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 set nocompatible                            " We're running Vim, not Vi!
 syntax on                                   " always do syntax highlighting
@@ -79,6 +81,8 @@ Plug 'vim-scripts/ruby-matchit'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/supertab'
+" Plug 'mxw/vim-jsx'
+" Plug 'pangloss/vim-javascript'
 " Plug 'janko-m/vim-test'
 " Plug 'skalnik/vim-vroom'
 
@@ -91,7 +95,6 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'flazz/vim-colorschemes'
 Plug 'yous/vim-open-color'
 Plug 'lambdatoast/elm.vim'
-" Plug 'elmcast/elm-vim'
 " Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
@@ -172,6 +175,9 @@ imap <C-q> <esc>wa
 
 " insert pry command
 iabbr bpry require'pry';binding.pry
+
+" insert co-authored by marc
+" iabbr co-marc Co-authored-by: marc <marrrc.b@gmail.com>
 
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)

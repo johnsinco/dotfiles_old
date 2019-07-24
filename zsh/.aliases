@@ -11,3 +11,4 @@ alias gd='git diff'
 alias ..='cd ..'
 alias dc='docker-compose'
 alias be='bundle exec'
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"

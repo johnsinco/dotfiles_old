@@ -41,6 +41,9 @@ bindkey '^[[B' history-substring-search-down
 # setup rbenv
 eval "$(rbenv init -)"
 
+# setup apache spark python
+export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.3/libexec/
+
 # FZF ignore files in gitignore
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -49,3 +52,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH=/Applications/miniconda3/bin:$PATH
+
