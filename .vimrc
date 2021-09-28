@@ -25,12 +25,13 @@ set autoread
 set foldmethod=manual
 set regexpengine=1
 set re=1
+set list
+set listchars=tab:>-
 " hack to try to speed up slow ruby files
 set synmaxcol=120                           " try to speed up long lines by not syntaxing them"
 syntax off
 set synmaxcol=400                           " try to speed up long lines by not syntaxing them"
 syntax on
-
 
 " set smartindent
 set tabstop=2 shiftwidth=2 expandtab
@@ -68,19 +69,19 @@ call plug#begin('~/.vim/plugged')
 " ===================  VIM plugins  ========================================
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'christoomey/vim-tmux-navigator'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-endwise'
-Plug 'raimondi/delimitmate'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/ruby-matchit'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/supertab'
+" Plug 'jiangmiao/auto-pairs'
 " Plug 'mxw/vim-jsx'
 " Plug 'pangloss/vim-javascript'
 " Plug 'janko-m/vim-test'
@@ -90,11 +91,12 @@ Plug 'vim-scripts/supertab'
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'elixir-lang/vim-elixir'
 Plug 'elixir-editors/vim-elixir'
-Plug 'hashivim/vim-terraform'
-Plug 'JamshedVesuna/vim-markdown-preview'
+" Plug 'hashivim/vim-terraform'
+" Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'flazz/vim-colorschemes'
 Plug 'yous/vim-open-color'
-Plug 'lambdatoast/elm.vim'
+" Plug 'lambdatoast/elm.vim'
+" Plug 'swalladge/paper'
 " Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
@@ -195,6 +197,7 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 nmap <silent> // :nohlsearch<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>'")
 
 " ================== FZF file finder =================
 nmap ; :Buffers<CR>
@@ -212,6 +215,8 @@ nmap <M-k> :Ack! "\b<cword>\b" <CR>
 " color atom-dark
 " color railscasts
 color open-color
+" color solarized
+" color paper
 
 
 " ==============  Ruby stuff =======================

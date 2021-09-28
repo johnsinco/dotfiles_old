@@ -1,5 +1,9 @@
 --ignore-ack-defaults
 --ignore-file=is:tags
+--ignore-file=is:.tags
+--ignore-file=is:tags.temp
+--ignore-file=is:bootsnap-load-path-cache
+--ignore-file=is:.rakeTasks
 # This is the default ackrc for ack version 2.24.
 
 # There are four different ways to match
@@ -18,6 +22,9 @@
 ### Directories to ignore
 --ignore-directory=is:log
 --ignore-dir=deps
+--ignore-dir=.bundle
+--ignore-dir=coverage
+--ignore-dir=.idea
 
 # Bazaar
 # http://bazaar.canonical.com/
@@ -174,6 +181,9 @@
 # ASP
 # http://msdn.microsoft.com/en-us/library/aa286483.aspx
 --type-add=asp:ext:asp
+
+# haml
+--type-add=haml:ext:haml
 
 # ASP.Net
 # http://www.asp.net/

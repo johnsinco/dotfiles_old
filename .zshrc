@@ -43,16 +43,27 @@ eval "$(rbenv init -)"
 
 # setup apache spark python
 export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.3/libexec/
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
 # FZF ignore files in gitignore
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export PATH="$PATH:/usr/local/opt/icu4c/bin"
+export PATH="$PATH:/usr/local/opt/icu4c/sbin"
+export PATH="$PATH:/usr/local/opt/openssl/bin"
 # KIEX for multiple elixir versions
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH=/Applications/miniconda3/bin:$PATH
+
+# use HOMEBREW coreutils versions of utilities
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+
+# stop homebrew from breaking ruby
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+# setup nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion"  ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
