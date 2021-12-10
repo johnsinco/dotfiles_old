@@ -25,6 +25,9 @@ HISTFILE=~/.zsh_history
 setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_ALL_DUPS
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# setup asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+
 # Functions
 #
 # (f)ind by (n)ame
@@ -38,9 +41,6 @@ source /usr/local/share/zsh-history-substring-search/zsh-history-substring-searc
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# setup rbenv
-eval "$(rbenv init -)"
-
 # setup apache spark python
 export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.3/libexec/
 export PYSPARK_DRIVER_PYTHON=jupyter
@@ -52,7 +52,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export PATH="$PATH:/usr/local/opt/icu4c/bin"
 export PATH="$PATH:/usr/local/opt/icu4c/sbin"
-export PATH="$PATH:/usr/local/opt/openssl/bin"
+# put openssl first in path ahead of system ssl
+export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+# export PATH="$PATH:/usr/local/opt/openssl/bin"
 # KIEX for multiple elixir versions
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 
@@ -62,8 +64,8 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 # stop homebrew from breaking ruby
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
-# setup nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion"  ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# use openssl in compiling gems
+export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
 
+export PATH="/usr/local/sbin:$PATH"

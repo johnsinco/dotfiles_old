@@ -118,6 +118,8 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
+" disable downcase for safety
+xnoremap u <nop>
 
 " split vim windows with 'vv' and 'ss'
 nnoremap <silent> vv <C-w>v
@@ -177,6 +179,8 @@ imap <C-q> <esc>wa
 
 " insert pry command
 iabbr bpry require'pry';binding.pry
+iabbr birb binding.irb
+iabbr biex require IEx ;IEx.pry
 
 " insert co-authored by marc
 " iabbr co-marc Co-authored-by: marc <marrrc.b@gmail.com>
