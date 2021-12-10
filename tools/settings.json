@@ -1,0 +1,40 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Dark+",
+    "editor.fontFamily": "Roboto Mono, JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 16,
+    "editor.formatOnType": true,
+    "editor.tabSize": 2,
+    "editor.rulers": [
+        120
+    ],
+    "editor.minimap.enabled": false,
+    "vim.cursorStylePerMode.visualblock": "block-outline",
+    "vim.highlightedyank.enable": true,
+    "vim.history": 1000,
+    "vim.handleKeys": {
+    
+        "<C-d>": true
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<C-h>"],
+          "after": ["<C-w>", "h"]
+        },
+        {
+          "before": ["<C-l>"],
+          "after": ["<C-w>", "l"]
+        },
+        {
+            "before": ["<leader>", "t"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen"
+                }
+            ]
+        },
+    ],
+    "vim.visualstar": true,
+    "git.autorefresh": false
+}
